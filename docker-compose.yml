@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  db:
+
+services:
+  postgres:
+    container_name: desafio_cadastro_projeto
+    image: postgres:10.5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: desafio_cadastro_projeto
+      POSTGRES_USER: desafio_cadastro_projeto
+      POSTGRES_PASSWORD: desafio_cadastro_projeto
+      MAX_CONNECTIONS: 300
+    networks:
+      - db
