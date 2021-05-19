@@ -1,7 +1,6 @@
-package br.com.desafio.projeto.api.response;
+package br.com.desafio.projeto.api.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -9,6 +8,8 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -16,28 +17,28 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProjectResponse {
+public class CreateTaskRequest {
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    @JsonProperty(value = "id")
-    private String id;
-
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonProperty(value = "nome")
+    @NotBlank(message = "O campo 'name' deve ser informado")
     private String name;
 
     @JsonProperty(value = "data_inicial")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @NotNull(message = "O campo 'startDate' deve ser informado")
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate startDate;
+    private LocalDate  startDate;
 
     @JsonProperty(value = "data_final")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @NotNull(message = "O campo 'endDate' deve ser informado")
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate endDate;
+
+    @JsonProperty(value = "finalizada")
+    @NotNull(message = "O campo 'finish' deve ser informado")
+    private Boolean finish;
 
 }

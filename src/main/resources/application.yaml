@@ -1,6 +1,5 @@
 server.servlet.context-path: /desafio
 
-# Config Spring
 spring:
   application:
     name: @project.name@
@@ -8,14 +7,13 @@ spring:
     active: @activatedProperties@
   main:
     allow-bean-definition-overriding: true
-# Actuator
+
 management:
   endpoints.web.exposure.include: "*"
   endpoint:
     health:
       show-details: ALWAYS
 
-# App info
 info:
   app:
     name: @project.name@

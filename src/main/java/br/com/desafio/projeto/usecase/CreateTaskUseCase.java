@@ -24,19 +24,19 @@ public class CreateTaskUseCase {
     private final GetProjectByIdGateway getProjectByIdGateway;
 
 
-    public Task execute(final Task task) throws UseCaseException{
+    public Task execute(final String project_id, final Task task) throws UseCaseException{
 
         try{
 
-            Project project = this.getProjectByIdGateway.execute(task.getProjectId());
+          Project project = this.getProjectByIdGateway.execute(project_id);
 
-            task.setProjectId(project.getId());
+            task.setProject(project);
 
             return this.createTaskGateway.execute(task);
 
         }catch (GatewayException e){
-            log.error("Error create project", e);
-            throw new CreateProjectUseCaseException("Error create project", e);
+            log.error("Error create task", e);
+            throw new CreateProjectUseCaseException("Error create task", e);
         }
 
     }

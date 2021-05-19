@@ -16,28 +16,37 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProjectResponse {
+public class UpdateTaskResponse {
+
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonProperty(value = "id")
     private String id;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    @JsonProperty(value = "nome")
+    @JsonProperty(value = "project_id")
+    private String project_id;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonProperty(value = "name")
     private String name;
 
-    @JsonProperty(value = "data_inicial")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonProperty(value = "data_inicial")
     private LocalDate startDate;
 
-    @JsonProperty(value = "data_final")
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonProperty(value = "data_final")
     private LocalDate endDate;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "finalizada")
+    private Boolean finish;
 }

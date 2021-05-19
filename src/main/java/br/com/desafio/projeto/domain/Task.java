@@ -2,6 +2,7 @@ package br.com.desafio.projeto.domain;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -13,13 +14,13 @@ public class Task {
 
     private String id;
 
-    private String projectId;
+    private Project project;
 
     private String name;
 
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     private Boolean finish;
 

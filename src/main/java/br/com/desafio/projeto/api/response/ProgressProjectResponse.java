@@ -10,13 +10,14 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProjectResponse {
+public class ProgressProjectResponse {
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonProperty(value = "id")
@@ -40,4 +41,13 @@ public class ProjectResponse {
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate endDate;
 
+    @JsonProperty(value = "porcentagem_completo")
+    private String percentComplete;
+
+    @JsonProperty(value = "atrasado")
+    private Boolean delayed;
+
+    @JsonProperty(value = "atividades")
+    private List<CreateTaskResponse> tasks;
+    
 }

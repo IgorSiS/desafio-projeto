@@ -28,7 +28,7 @@ public class GetProjectByIdDatabaseGateway implements GetProjectByIdGateway {
 
             final Optional<ProjectDatabase> projectDatabase = this.projectRepository.findById(id);
 
-            return projectDatabase.map(ProjectDatabaseToProjectTranslator::execute).orElse(null);
+            return projectDatabase.map(ProjectDatabaseToProjectTranslator::execute).orElseThrow(() -> new GatewayException("Project not found"));
 
         }catch (Exception e){
             log.error("Error when try save task on database", e);

@@ -2,6 +2,9 @@ package br.com.desafio.projeto.domain;
 
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,7 +16,13 @@ public class Project {
 
     private String name;
 
-    private String startDate;
+    private LocalDate startDate;
 
-    private String endDate;
+    private LocalDate  endDate;
+
+    private String percentComplete;
+
+    private Boolean delayed;
+
+    private List<Task> tasks;
 }

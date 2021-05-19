@@ -1,10 +1,10 @@
 package br.com.desafio.projeto.controller;
 
 import br.com.desafio.projeto.api.CreateTaskApi;
-import br.com.desafio.projeto.api.request.TaskRequest;
-import br.com.desafio.projeto.api.response.TaskResponse;
-import br.com.desafio.projeto.controller.translator.TaskRequestToTaskTranslator;
-import br.com.desafio.projeto.controller.translator.TaskToTaskResponseTranslator;
+import br.com.desafio.projeto.api.request.CreateTaskRequest;
+import br.com.desafio.projeto.api.response.CreateTaskResponse;
+import br.com.desafio.projeto.controller.translator.CreateTaskRequestToTaskTranslator;
+import br.com.desafio.projeto.controller.translator.TaskToCreateTaskResponseTranslator;
 import br.com.desafio.projeto.domain.Task;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
 import br.com.desafio.projeto.usecase.CreateTaskUseCase;
@@ -26,13 +26,13 @@ public class CreateTaskController implements CreateTaskApi {
     private final CreateTaskUseCase createTaskUseCase;
 
     @Override
-    public TaskResponse execute(@PathVariable final String projectId,
-                                @Valid @RequestBody final TaskRequest request) throws UseCaseException {
+    public CreateTaskResponse execute(@PathVariable final String project_id,
+                                      @Valid @RequestBody final CreateTaskRequest request) throws UseCaseException {
 
         log.info("Receiving data for task creation");
 
-        Task task = this.createTaskUseCase.execute(TaskRequestToTaskTranslator.execute(projectId,request));
+        Task task = this.createTaskUseCase.execute(project_id, CreateTaskRequestToTaskTranslator.execute(request));
 
-        return TaskToTaskResponseTranslator.execute(task);
+        return TaskToCreateTaskResponseTranslator.execute(task);
     }
 }

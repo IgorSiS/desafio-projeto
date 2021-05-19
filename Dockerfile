@@ -1,7 +1,7 @@
 FROM adoptopenjdk/openjdk11-openj9:alpine-jre
 
 ENV APP_TARGET target
-ENV APP desafio.jar
+ENV APP desafio-cadastro-projeto.jar
 
 RUN mkdir -p /opt
 COPY ${APP_TARGET}/${APP} /opt

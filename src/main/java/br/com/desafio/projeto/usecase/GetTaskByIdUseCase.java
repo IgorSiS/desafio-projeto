@@ -1,10 +1,9 @@
 package br.com.desafio.projeto.usecase;
 
-import br.com.desafio.projeto.domain.Project;
+import br.com.desafio.projeto.domain.Task;
 import br.com.desafio.projeto.domain.exception.CreateProjectUseCaseException;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
-import br.com.desafio.projeto.gateway.CreateProjectGateway;
-import br.com.desafio.projeto.gateway.database.GetProjectByIdDatabaseGateway;
+import br.com.desafio.projeto.gateway.GetTaskByIdGateway;
 import br.com.desafio.projeto.gateway.exception.GatewayException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,20 +13,20 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class GetProjectByIdUseCase {
+public class GetTaskByIdUseCase {
 
     @Autowired
-    private final GetProjectByIdDatabaseGateway getProjectByIdDatabaseGateway;
+    private final GetTaskByIdGateway getTaskByIdGateway;
 
-    public Project execute(final String id) throws UseCaseException{
+    public Task execute(final String id) throws UseCaseException{
 
         try{
 
-            return this.getProjectByIdDatabaseGateway.execute(id);
+            return this.getTaskByIdGateway.execute(id);
 
         }catch (GatewayException e){
-            log.error("project not found", e);
-            throw new CreateProjectUseCaseException("project not found", e);
+            log.error("Error get task by id", e);
+            throw new CreateProjectUseCaseException("Error get task by id", e);
         }
 
     }

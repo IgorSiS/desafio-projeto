@@ -1,6 +1,6 @@
 package br.com.desafio.projeto.api;
 
-import br.com.desafio.projeto.api.request.ProjectRequest;
+import br.com.desafio.projeto.api.request.CreateProjectRequest;
 import br.com.desafio.projeto.api.response.ProjectResponse;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
 import org.springframework.http.HttpStatus;
@@ -16,5 +16,5 @@ public interface CreateProjectApi {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    ProjectResponse execute(@Valid @RequestBody final ProjectRequest request) throws UseCaseException;
+    ProjectResponse execute(@Valid @RequestBody final CreateProjectRequest request) throws UseCaseException;
 }
