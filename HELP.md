@@ -22,7 +22,11 @@
 quando ninguém está usando. Para usar o serviço, chamar o recurso de health check para que o serviço suba. Ou você pode também rodar local executando docker-compose e subindo o serviço
 
 
-Link das collections e variáveis de ambiente para importar no postman.
+Link das collections para importar no postman
+
+URL BASE HEROKU: https://desafio-projeto.herokuapp.com/
+
+https://www.getpostman.com/collections/bd9388bfdbfb22a02362
 
 
 
