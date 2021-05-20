@@ -2,6 +2,7 @@ package br.com.desafio.projeto.usecase;
 
 import br.com.desafio.projeto.domain.Project;
 import br.com.desafio.projeto.domain.exception.CreateProjectUseCaseException;
+import br.com.desafio.projeto.domain.exception.GetProjectByIdUseCaseException;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
 import br.com.desafio.projeto.gateway.CreateProjectGateway;
 import br.com.desafio.projeto.gateway.database.GetProjectByIdDatabaseGateway;
@@ -27,7 +28,7 @@ public class GetProjectByIdUseCase {
 
         }catch (GatewayException e){
             log.error("project not found", e);
-            throw new CreateProjectUseCaseException("project not found", e);
+            throw new GetProjectByIdUseCaseException("project by id not found", e);
         }
 
     }

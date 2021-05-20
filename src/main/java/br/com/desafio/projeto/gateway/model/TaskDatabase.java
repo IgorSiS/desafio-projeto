@@ -23,7 +23,7 @@ public class TaskDatabase {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     private ProjectDatabase project;
 

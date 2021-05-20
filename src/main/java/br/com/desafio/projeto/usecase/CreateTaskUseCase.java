@@ -2,7 +2,7 @@ package br.com.desafio.projeto.usecase;
 
 import br.com.desafio.projeto.domain.Project;
 import br.com.desafio.projeto.domain.Task;
-import br.com.desafio.projeto.domain.exception.CreateProjectUseCaseException;
+import br.com.desafio.projeto.domain.exception.CreateTaskUseCaseException;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
 import br.com.desafio.projeto.gateway.CreateTaskGateway;
 import br.com.desafio.projeto.gateway.GetProjectByIdGateway;
@@ -36,7 +36,7 @@ public class CreateTaskUseCase {
 
         }catch (GatewayException e){
             log.error("Error create task", e);
-            throw new CreateProjectUseCaseException("Error create task", e);
+            throw new CreateTaskUseCaseException("Error create task", e);
         }
 
     }

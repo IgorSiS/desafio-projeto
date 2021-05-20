@@ -1,18 +1,21 @@
 package br.com.desafio.projeto.gateway.database.translator;
 
+
 import br.com.desafio.projeto.domain.Project;
 import br.com.desafio.projeto.gateway.model.ProjectDatabase;
 import br.com.desafio.projeto.mapper.ProjectMapper;
 import lombok.experimental.UtilityClass;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @UtilityClass
-public class ProjectToProjectDatabaseTranslator {
+public class ProjectDatabaseListToProjectListTranslator {
 
     private final ProjectMapper MAPPER = Mappers.getMapper(ProjectMapper.class);
 
-    public ProjectDatabase execute(Project project) {
+    public List<Project> execute(List<ProjectDatabase> projectDatabase) {
 
-        return MAPPER.projectToProjectDatabase(project);
+       return MAPPER.projectDatabaseListToProjectList(projectDatabase);
     }
 }

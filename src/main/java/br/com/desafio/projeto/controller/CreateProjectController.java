@@ -2,9 +2,9 @@ package br.com.desafio.projeto.controller;
 
 import br.com.desafio.projeto.api.CreateProjectApi;
 import br.com.desafio.projeto.api.request.CreateProjectRequest;
-import br.com.desafio.projeto.api.response.ProjectResponse;
+import br.com.desafio.projeto.api.response.CreateProjectResponse;
 import br.com.desafio.projeto.controller.translator.ProjectRequestToRequestTranslator;
-import br.com.desafio.projeto.controller.translator.ProjectToProjectResponseTranslator;
+import br.com.desafio.projeto.controller.translator.ProjectToCreateProjectResponseTranslator;
 import br.com.desafio.projeto.domain.Project;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
 import br.com.desafio.projeto.usecase.CreateProjectUseCase;
@@ -25,12 +25,12 @@ public class CreateProjectController implements CreateProjectApi {
     private final CreateProjectUseCase createProjectUseCase;
 
     @Override
-    public ProjectResponse execute(@Valid @RequestBody final CreateProjectRequest request) throws UseCaseException {
+    public CreateProjectResponse execute(@Valid @RequestBody final CreateProjectRequest request) throws UseCaseException {
 
         log.info("Receiving data for project creation");
 
         Project project = this.createProjectUseCase.execute(ProjectRequestToRequestTranslator.execute(request));
 
-        return ProjectToProjectResponseTranslator.execute(project);
+        return ProjectToCreateProjectResponseTranslator.execute(project);
     }
 }

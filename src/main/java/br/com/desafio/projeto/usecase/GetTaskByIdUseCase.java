@@ -2,6 +2,8 @@ package br.com.desafio.projeto.usecase;
 
 import br.com.desafio.projeto.domain.Task;
 import br.com.desafio.projeto.domain.exception.CreateProjectUseCaseException;
+import br.com.desafio.projeto.domain.exception.GetTaskByIdUseCaseException;
+import br.com.desafio.projeto.domain.exception.UpdateProjectUseCaseException;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
 import br.com.desafio.projeto.gateway.GetTaskByIdGateway;
 import br.com.desafio.projeto.gateway.exception.GatewayException;
@@ -26,7 +28,7 @@ public class GetTaskByIdUseCase {
 
         }catch (GatewayException e){
             log.error("Error get task by id", e);
-            throw new CreateProjectUseCaseException("Error get task by id", e);
+            throw new GetTaskByIdUseCaseException("Error get task by id", e);
         }
 
     }

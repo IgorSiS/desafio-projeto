@@ -3,6 +3,8 @@ package br.com.desafio.projeto.usecase;
 import br.com.desafio.projeto.domain.Project;
 import br.com.desafio.projeto.domain.Task;
 import br.com.desafio.projeto.domain.exception.CreateProjectUseCaseException;
+import br.com.desafio.projeto.domain.exception.UpdateProjectUseCaseException;
+import br.com.desafio.projeto.domain.exception.UpdateTaskUseCaseException;
 import br.com.desafio.projeto.domain.exception.UseCaseException;
 import br.com.desafio.projeto.gateway.UpdateTaskGateway;
 import br.com.desafio.projeto.gateway.exception.GatewayException;
@@ -42,7 +44,7 @@ public class UpdateTaskUseCase {
 
         } catch (GatewayException e) {
             log.error("Error update task", e);
-            throw new CreateProjectUseCaseException("Error update task", e);
+            throw new UpdateTaskUseCaseException("Error update task", e);
         }
 
     }
